@@ -15,7 +15,7 @@ public class PatientManagementSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new LogInUsers.LogInScreen().setVisible(true);
     }
     
 }

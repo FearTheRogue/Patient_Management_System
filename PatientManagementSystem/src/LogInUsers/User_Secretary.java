@@ -17,6 +17,11 @@ public class User_Secretary extends javax.swing.JFrame {
     public User_Secretary() {
         initComponents();
     }
+    
+    public User_Secretary(String userID){
+        initComponents();
+        secretary_id_lbl.setText(userID);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,12 +33,12 @@ public class User_Secretary extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        SecretaryUserID_lbl = new javax.swing.JLabel();
+        SecretaryName_lbl = new javax.swing.JLabel();
+        SecretaryAddress_lbl = new javax.swing.JLabel();
+        secretary_id_lbl = new javax.swing.JLabel();
+        secretary_name_lbl = new javax.swing.JLabel();
+        secretary_address_lbl = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -45,17 +50,17 @@ public class User_Secretary extends javax.swing.JFrame {
 
         jLabel1.setText("Secretary");
 
-        jLabel2.setText("Secretary User ID:");
+        SecretaryUserID_lbl.setText("Secretary User ID:");
 
-        jLabel3.setText("Secretary Name:");
+        SecretaryName_lbl.setText("Secretary Name:");
 
-        jLabel4.setText("Secretary Address:");
+        SecretaryAddress_lbl.setText("Secretary Address:");
 
-        jLabel5.setText("secretary_id");
+        secretary_id_lbl.setText("secretary_id");
 
-        jLabel6.setText("secretary_name");
+        secretary_name_lbl.setText("secretary_name");
 
-        jLabel7.setText("secretary_address");
+        secretary_address_lbl.setText("secretary_address");
 
         jButton1.setText("Approve Patient accounts");
 
@@ -83,14 +88,14 @@ public class User_Secretary extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(92, 92, 92)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
+                                    .addComponent(SecretaryAddress_lbl)
+                                    .addComponent(SecretaryName_lbl)
+                                    .addComponent(SecretaryUserID_lbl))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))))
+                                    .addComponent(secretary_address_lbl)
+                                    .addComponent(secretary_name_lbl)
+                                    .addComponent(secretary_id_lbl))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -111,21 +116,20 @@ public class User_Secretary extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
+                            .addComponent(SecretaryUserID_lbl)
+                            .addComponent(secretary_id_lbl))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6))
+                            .addComponent(SecretaryName_lbl)
+                            .addComponent(secretary_name_lbl))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
+                        .addComponent(SecretaryAddress_lbl))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jLabel7)))
+                        .addComponent(secretary_address_lbl)))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -181,6 +185,9 @@ public class User_Secretary extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SecretaryAddress_lbl;
+    private javax.swing.JLabel SecretaryName_lbl;
+    private javax.swing.JLabel SecretaryUserID_lbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -188,11 +195,8 @@ public class User_Secretary extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel secretary_address_lbl;
+    private javax.swing.JLabel secretary_id_lbl;
+    private javax.swing.JLabel secretary_name_lbl;
     // End of variables declaration//GEN-END:variables
 }

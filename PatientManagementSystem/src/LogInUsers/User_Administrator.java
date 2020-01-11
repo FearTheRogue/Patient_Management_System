@@ -22,6 +22,7 @@ public class User_Administrator extends javax.swing.JFrame {
     {
         initComponents();
         admin_id_lbl.setText(userID);
+        FillOutDetails();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,32 +34,24 @@ public class User_Administrator extends javax.swing.JFrame {
     private void initComponents() {
 
         Admin_lbl = new javax.swing.JLabel();
-        AdminUser_lbl = new javax.swing.JLabel();
-        AdminName_lbl = new javax.swing.JLabel();
-        AdminAddress_lbl = new javax.swing.JLabel();
-        admin_id_lbl = new javax.swing.JLabel();
-        admin_name_lbl = new javax.swing.JLabel();
-        admin_address_lbl = new javax.swing.JLabel();
         add_remove_btn = new javax.swing.JButton();
         viewRatings_btn = new javax.swing.JButton();
         feedback_btn = new javax.swing.JButton();
         createAccount_btn = new javax.swing.JButton();
+        LogOut_btn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        AdminUser_lbl = new javax.swing.JLabel();
+        admin_id_lbl = new javax.swing.JLabel();
+        admin_name_lbl = new javax.swing.JLabel();
+        admin_address_lbl = new javax.swing.JLabel();
+        AdminAddress_lbl = new javax.swing.JLabel();
+        AdminName_lbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Admin_lbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Admin_lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Admin_lbl.setText("Administrator");
-
-        AdminUser_lbl.setText("Admin User ID:");
-
-        AdminName_lbl.setText("Admin Name:");
-
-        AdminAddress_lbl.setText("Admin Address:");
-
-        admin_id_lbl.setText("admin_id");
-
-        admin_name_lbl.setText("admin_name");
-
-        admin_address_lbl.setText("admin_address");
 
         add_remove_btn.setText("Add/Remove doctors/secretaries");
         add_remove_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -88,44 +81,100 @@ public class User_Administrator extends javax.swing.JFrame {
             }
         });
 
+        LogOut_btn.setText("Log Out");
+        LogOut_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOut_btnActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        AdminUser_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AdminUser_lbl.setText("Admin User ID:");
+
+        admin_id_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        admin_id_lbl.setText("admin_id");
+
+        admin_name_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        admin_name_lbl.setText("admin_name");
+
+        admin_address_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        admin_address_lbl.setText("admin_address");
+
+        AdminAddress_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AdminAddress_lbl.setText("Admin Address:");
+
+        AdminName_lbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AdminName_lbl.setText("Admin Name:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AdminName_lbl)
+                    .addComponent(AdminUser_lbl)
+                    .addComponent(AdminAddress_lbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(admin_id_lbl)
+                    .addComponent(admin_name_lbl)
+                    .addComponent(admin_address_lbl))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(admin_id_lbl)
+                    .addComponent(AdminUser_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminName_lbl)
+                    .addComponent(admin_name_lbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminAddress_lbl)
+                    .addComponent(admin_address_lbl))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(LogOut_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(AdminAddress_lbl)
-                                        .addComponent(AdminName_lbl))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(AdminUser_lbl)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(admin_name_lbl)
-                                    .addComponent(admin_address_lbl)
-                                    .addComponent(admin_id_lbl)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(166, 166, 166)
-                                .addComponent(Admin_lbl)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 10, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 11, Short.MAX_VALUE)
                                 .addComponent(add_remove_btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(feedback_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(createAccount_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(viewRatings_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(createAccount_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(viewRatings_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(feedback_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Admin_lbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -133,27 +182,22 @@ public class User_Administrator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Admin_lbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(viewRatings_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(createAccount_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(admin_id_lbl)
-                    .addComponent(AdminUser_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AdminName_lbl)
-                    .addComponent(admin_name_lbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AdminAddress_lbl)
-                    .addComponent(admin_address_lbl))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewRatings_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(createAccount_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(feedback_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(add_remove_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(add_remove_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(feedback_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LogOut_btn)
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -172,8 +216,14 @@ public class User_Administrator extends javax.swing.JFrame {
     }//GEN-LAST:event_feedback_btnActionPerformed
 
     private void createAccount_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccount_btnActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_createAccount_btnActionPerformed
+
+    private void LogOut_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOut_btnActionPerformed
+        this.setVisible(false);
+        LogInScreen LogIn = new LogInScreen();
+        LogIn.setVisible(true);
+    }//GEN-LAST:event_LogOut_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,17 +261,25 @@ public class User_Administrator extends javax.swing.JFrame {
         });
     }
 
+    private void FillOutDetails(){
+        admin_name_lbl.setText("Auther");
+        admin_address_lbl.setText("Plymouth");
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdminAddress_lbl;
     private javax.swing.JLabel AdminName_lbl;
     private javax.swing.JLabel AdminUser_lbl;
     private javax.swing.JLabel Admin_lbl;
+    private javax.swing.JButton LogOut_btn;
     private javax.swing.JButton add_remove_btn;
     private javax.swing.JLabel admin_address_lbl;
     private javax.swing.JLabel admin_id_lbl;
     private javax.swing.JLabel admin_name_lbl;
     private javax.swing.JButton createAccount_btn;
     private javax.swing.JButton feedback_btn;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton viewRatings_btn;
     // End of variables declaration//GEN-END:variables
 }

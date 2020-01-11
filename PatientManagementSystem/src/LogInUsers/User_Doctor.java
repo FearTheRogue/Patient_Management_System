@@ -18,6 +18,11 @@ public class User_Doctor extends javax.swing.JFrame {
         initComponents();
     }
 
+    public User_Doctor(String userID) {
+        initComponents();
+        doctor_id_lbl.setText(userID);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,9 +35,9 @@ public class User_Doctor extends javax.swing.JFrame {
         doctor_lbl = new javax.swing.JLabel();
         UserID_lbl = new javax.swing.JLabel();
         Name_lbl = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        doctor_address_lbl = new javax.swing.JLabel();
+        doctor_id_lbl = new javax.swing.JLabel();
+        doctor_name_lbl = new javax.swing.JLabel();
         Address_lbl = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -49,11 +54,11 @@ public class User_Doctor extends javax.swing.JFrame {
 
         Name_lbl.setText("Doctor Name: ");
 
-        jLabel4.setText("doctor_address");
+        doctor_address_lbl.setText("doctor_address");
 
-        jLabel5.setText("doctor_id");
+        doctor_id_lbl.setText("doctor_id");
 
-        jLabel6.setText("doctor_name");
+        doctor_name_lbl.setText("doctor_name");
 
         Address_lbl.setText("Doctor Address: ");
 
@@ -95,9 +100,9 @@ public class User_Doctor extends javax.swing.JFrame {
                             .addComponent(Address_lbl))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4))))
+                            .addComponent(doctor_id_lbl)
+                            .addComponent(doctor_name_lbl)
+                            .addComponent(doctor_address_lbl))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -125,14 +130,14 @@ public class User_Doctor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UserID_lbl)
-                    .addComponent(jLabel5))
+                    .addComponent(doctor_id_lbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Name_lbl)
-                    .addComponent(jLabel6))
+                    .addComponent(doctor_name_lbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(doctor_address_lbl)
                     .addComponent(Address_lbl))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -195,15 +200,15 @@ public class User_Doctor extends javax.swing.JFrame {
     private javax.swing.JLabel Address_lbl;
     private javax.swing.JLabel Name_lbl;
     private javax.swing.JLabel UserID_lbl;
+    private javax.swing.JLabel doctor_address_lbl;
+    private javax.swing.JLabel doctor_id_lbl;
     private javax.swing.JLabel doctor_lbl;
+    private javax.swing.JLabel doctor_name_lbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
