@@ -16,5 +16,8 @@ public class PatientManagementSystem {
      */
     public static void main(String[] args) {
         new LogInUsers.LogInScreen().setVisible(true);
+        
+        WriteJSONFile file = new WriteJSONFile();
+        System.out.println("System written to file");
     }
 }

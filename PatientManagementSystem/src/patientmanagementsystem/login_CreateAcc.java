@@ -5,11 +5,18 @@
  */
 package patientmanagementsystem;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
+//import jdk.nashorn.internal.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import patientmanagementsystem.WriteJSONFile;
 
 /**
  *
@@ -80,6 +87,11 @@ public class login_CreateAcc extends javax.swing.JFrame {
 
         patient_name_txt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         patient_name_txt.setText("jTextField1");
+        patient_name_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_name_txtActionPerformed(evt);
+            }
+        });
 
         patient_address_txt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         patient_address_txt.setText("jTextField1");
@@ -143,7 +155,8 @@ public class login_CreateAcc extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        requestAcc_btn.setText("jButton1");
+        requestAcc_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        requestAcc_btn.setText("Request Account");
         requestAcc_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestAcc_btnActionPerformed(evt);
@@ -156,14 +169,12 @@ public class login_CreateAcc extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(requestAcc_btn)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(requestAcc_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(requestAcc_btn)
-                .addGap(0, 77, Short.MAX_VALUE))
+            .addComponent(requestAcc_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,9 +186,7 @@ public class login_CreateAcc extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -189,7 +198,7 @@ public class login_CreateAcc extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,6 +215,10 @@ public class login_CreateAcc extends javax.swing.JFrame {
     private void requestAcc_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestAcc_btnActionPerformed
         CreateNewAccount();
     }//GEN-LAST:event_requestAcc_btnActionPerformed
+
+    private void patient_name_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_name_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_patient_name_txtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,37 +257,11 @@ public class login_CreateAcc extends javax.swing.JFrame {
 
     private void CreateNewAccount(){
         
-        String[] newAccount = new String[4];
+        WriteJSONFile file = new WriteJSONFile();
         
-        newAccount[0] = patient_name_txt.getText();
-        newAccount[1] = patient_address_txt.getText();
-        newAccount[2] = (String) patientgender_cBox.getSelectedItem();
-        newAccount[3] = (String) patientage_cBox.getSelectedItem();
+        file.AddPatient(patient_name_txt.getText(), patient_address_txt.getText());
         
-        System.out.println(newAccount[0]);
-        
-        JSONObject obj = new JSONObject();
-        obj.put("name", patient_name_txt.getText());
-        obj.put("address", patient_address_txt.getText());
-        obj.put("gender", patientgender_cBox.getSelectedItem());
-        obj.put("age", patientage_cBox.getSelectedItem());
-        
-        //JSONArray list = new JSONArray();
-        //list.add("Java");
-        //list.add("dasa");
-        //list.add("djiasjd");
-        
-        //obj.put("Courses", list);
-        
-        try(FileWriter file = new FileWriter("myJSON.json"))
-        {
-          file.write(obj.toString());
-          file.flush();
-        } 
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+       // WriteJSONFile file = new WriteJSONFile(patient_name_txt.getText(), patient_address_txt.getText());
         
         if(patientgender_cBox.getSelectedIndex() == 0){
              JOptionPane.showMessageDialog(null, "Please select your Gender", 
@@ -283,8 +270,7 @@ public class login_CreateAcc extends javax.swing.JFrame {
         if(patientage_cBox.getSelectedIndex() == 0){
              JOptionPane.showMessageDialog(null, "Please select your Age", 
                 "Creating Account Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
+        }      
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -306,4 +292,26 @@ public class login_CreateAcc extends javax.swing.JFrame {
         patient_name_txt.setText(null);
         patient_address_txt.setText(null);
     }   
+
+    /*private void ReadJSONFile(){
+        
+        JSONParser parser = new JSONParser();
+        
+        try 
+        {
+            Object obj = parser.parse(new FileReader("myJSON.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+            String id = (String)jsonObject.get("id");
+            System.out.println("id is: "  + id);
+        } 
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        //catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}  
+    }
+    
+    private void WriteJSONFile(){
+              
+        
+    }*/
 }

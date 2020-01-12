@@ -4,6 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/LogInScreen.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/login_CreateAcc.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/ReadJSONFile.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/WriteJSONFile.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/User_Patient.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/admin_CreateOwnAccount.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/PatientManagementSystem.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/User_Administrator.java</file>
         </group>
     </open-files>
 </project-private>

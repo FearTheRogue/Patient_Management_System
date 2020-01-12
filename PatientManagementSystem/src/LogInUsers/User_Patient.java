@@ -5,7 +5,8 @@
  */
 package LogInUsers;
 
-import java.util.HashSet;
+import javax.swing.JOptionPane;
+import patientmanagementsystem.ReadJSONFile;
 
 /**
  *
@@ -54,7 +55,7 @@ public class User_Patient extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        termination_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,8 +175,13 @@ public class User_Patient extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("View Appointment");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setLabel("Request account termination");
+        termination_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        termination_btn.setLabel("Request account termination");
+        termination_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                termination_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -185,7 +191,7 @@ public class User_Patient extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(termination_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
@@ -197,7 +203,7 @@ public class User_Patient extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(termination_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,6 +255,12 @@ public class User_Patient extends javax.swing.JFrame {
         LogIn.setVisible(true);
     }//GEN-LAST:event_Logout_btnActionPerformed
 
+    private void termination_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_termination_btnActionPerformed
+        JOptionPane.showConfirmDialog(null, "Are you sure you want to remove"
+                + " patient account?\n This cannot be undone", 
+                "Account Warning", JOptionPane.YES_NO_CANCEL_OPTION);
+    }//GEN-LAST:event_termination_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,17 +296,24 @@ public class User_Patient extends javax.swing.JFrame {
         });
     }
 
+    private void FillData(){
+        int userID = 0;
+        ReadJSONFile file = new ReadJSONFile(userID);
+        
+        //file.
+        
+        
+    }
+    
     private void PatientsData(){
         patient_name_lbl.setText(null);
         patient_address_lbl.setText(null);
         patient_gender_lbl.setText(null);
         patient_age_lbl.setText(null);
-        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Logout_btn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -313,5 +332,6 @@ public class User_Patient extends javax.swing.JFrame {
     private javax.swing.JLabel patient_gender_lbl;
     private javax.swing.JLabel patient_id_lbl;
     private javax.swing.JLabel patient_name_lbl;
+    private javax.swing.JButton termination_btn;
     // End of variables declaration//GEN-END:variables
 }
