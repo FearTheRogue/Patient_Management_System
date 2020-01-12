@@ -17,5 +17,4 @@ public class PatientManagementSystem {
     public static void main(String[] args) {
         new LogInUsers.LogInScreen().setVisible(true);
     }
-    
 }

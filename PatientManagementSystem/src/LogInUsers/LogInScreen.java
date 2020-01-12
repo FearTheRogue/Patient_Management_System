@@ -6,6 +6,7 @@
 package LogInUsers;
 
 import javax.swing.JOptionPane;
+import patientmanagementsystem.login_CreateAcc;
 
 /**
  *
@@ -38,7 +39,7 @@ public class LogInScreen extends javax.swing.JFrame {
         User_txt = new javax.swing.JTextField();
         Password_pfield = new javax.swing.JPasswordField();
         Exit_btn = new javax.swing.JButton();
-        Exit_btn1 = new javax.swing.JButton();
+        CreateAcc_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,11 +114,11 @@ public class LogInScreen extends javax.swing.JFrame {
             }
         });
 
-        Exit_btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Exit_btn1.setText("Create Account");
-        Exit_btn1.addActionListener(new java.awt.event.ActionListener() {
+        CreateAcc_btn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CreateAcc_btn.setText("Create Account");
+        CreateAcc_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Exit_btn1ActionPerformed(evt);
+                CreateAcc_btnActionPerformed(evt);
             }
         });
 
@@ -126,25 +127,20 @@ public class LogInScreen extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Exit_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Logon_lbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(CreateAcc_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Login_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Exit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Logon_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(Exit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +154,7 @@ public class LogInScreen extends javax.swing.JFrame {
                     .addComponent(Login_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Exit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Exit_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CreateAcc_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -177,9 +173,12 @@ public class LogInScreen extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_Exit_btnActionPerformed
 
-    private void Exit_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Exit_btn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Exit_btn1ActionPerformed
+    private void CreateAcc_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAcc_btnActionPerformed
+        login_CreateAcc createAcc = new login_CreateAcc();
+        createAcc.setVisible(true);
+        
+        CloseLogin();
+    }//GEN-LAST:event_CreateAcc_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,8 +286,8 @@ public class LogInScreen extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CreateAcc_btn;
     private javax.swing.JButton Exit_btn;
-    private javax.swing.JButton Exit_btn1;
     private javax.swing.JButton Login_btn;
     private javax.swing.JLabel Logon_lbl;
     private javax.swing.JLabel Password_lbl;
