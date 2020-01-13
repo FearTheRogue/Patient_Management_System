@@ -23,14 +23,15 @@ public class ReadJSONFile {
     public String users;
     public String UserID;
     public String Password;
+    //private boolean isUser = false;
     
-    public void ReadInUsers() {
+    public boolean ReadInUsers(String id, String pw) {
         
         JSONParser parser = new JSONParser();
         
         try 
         {
-            Object obj = parser.parse(new FileReader("src\\JSONFiles\\Users.json"));
+            Object obj = parser.parse(new FileReader("src\\JSONFiles\\RolesSystem.json"));
             JSONObject jsonObject = (JSONObject) obj;
             
             JSONArray usersArray = (JSONArray) jsonObject.get("users");
@@ -49,28 +50,131 @@ public class ReadJSONFile {
                 Pattern pat = Pattern.compile(", *");
                 Matcher match = pat.matcher(users);
                 
-                System.out.println(i + " " + users);
+                //System.out.println(i + " " + users);
                 
                 if(match.find()){
                     UserID = users.substring(0,match.start());
                     Password = users.substring(match.end());
                 }
                 
-                System.out.println("userid " + UserID);  
-                System.out.println("password " + Password);
+                if(UserID.equals(id) && Password.equals(pw)){
+                    System.out.println("Account " + UserID + " Has the password " + Password);
+                    return true;
+                } 
                 
-              
+                //System.out.println("userid " + UserID);  
+                //System.out.println("password " + Password);
+                
                 iterator.next();
                 i++;
-            
+                
             }
             
-            System.out.println("All users have been read in");
-            System.out.println(usersArray);
+            //System.out.println("All users have been read in");
+            //System.out.println(usersArray);
         } 
         catch (FileNotFoundException e) {e.printStackTrace();}
         catch (IOException e) {e.printStackTrace();}
         //catch (ParseException e) {e.printStackTrace();}
-        catch (Exception e) {e.printStackTrace();}  
+        catch (Exception e) {e.printStackTrace();}
+        return false;  
+    }
+    
+        public void ReadInPatientsDetails(){
+        String pUserID = null;
+        String pUsername = null;
+        String pAddress = null;
+        String Gender = null;
+        String Age = null;
+        
+        JSONParser parser = new JSONParser();
+        
+        try {
+            Object obj = parser.parse(new FileReader("src\\JSONFiles\\UserDetails.json"));
+            JSONObject jsonObject = (JSONObject)obj;
+            
+            JSONArray patientsArray = (JSONArray) jsonObject.get("Patients");
+            Iterator<String> iterator = patientsArray.iterator();
+            
+            int i = 0;
+            while(iterator.hasNext()){
+                String details = (String)patientsArray.get(i);
+                
+                //System.out.println(details);
+                
+                Pattern pat = Pattern.compile(",,,,*");
+                Matcher match = pat.matcher(details);
+                
+                //System.out.println(pat.match(details));
+                
+                if(match.find()){
+                    pUserID = details.substring(0, match.start());
+                    pUsername = details.substring(match.end());
+                    pAddress = details.substring(match.end());
+                    //Gender = details.
+                }
+                
+                
+                System.out.println("User: " + pUserID);
+                System.out.println("Username: " + pUsername);
+                System.out.println("Address: " + pAddress);
+                System.out.println("Gender: " + Gender);
+                System.out.println("Age: " + Age);
+                
+                //System.out.println(details);
+                iterator.next();
+                i++;
+            }
+        }
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        //catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}
+    }
+        
+    public void ReadInDoctorsDetails(){
+        String dUserID = null;
+        String dUsername = null;
+        String dAddress = null;
+        
+        JSONParser parser = new JSONParser();
+        
+        try {
+            Object obj = parser.parse(new FileReader("src\\JSONFiles\\UserDetails.json"));
+            JSONObject jsonObject = (JSONObject)obj;
+            
+            JSONArray doctorsArray = (JSONArray) jsonObject.get("Doctors");
+            Iterator<String> iterator = doctorsArray.iterator();
+            
+            int i = 0;
+            while(iterator.hasNext()){
+                String details = (String)doctorsArray.get(i);
+                
+                System.out.println(details);
+                
+                Pattern pat = Pattern.compile(",,*");
+                Matcher match = pat.matcher(details);
+                
+                System.out.println(pat.matcher(details));
+                
+                if(match.find()){
+                    dUserID = details.substring(0, match.start());
+                    dUsername = details.substring(match.end());
+                    dAddress = details.substring(match.end());
+                }
+
+                System.out.println("User: " + dUserID);
+                System.out.println("Username: " + dUsername);
+                System.out.println("Address: " + dAddress);
+                
+                //System.out.println(details);
+                iterator.next();
+                i++;
+            }
+        }
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        //catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}
     }
 }

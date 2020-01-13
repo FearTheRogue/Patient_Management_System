@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/James/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/LogInScreen.java</file>
-            <file>file:/C:/Users/James/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/ReadJSONFile.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/LogInScreen.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/JSONFiles/UserDetails.json</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/JSONFiles/RolesSystem.json</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/ReadJSONFile.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/User_Doctor.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/WriteJSONFile.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/User_Patient.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/patientmanagementsystem/admin_CreateOwnAccount.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/User_Administrator.java</file>
+            <file>file:/C:/Users/coypu/Documents/GitHub/Patient_Management_System/PatientManagementSystem/src/LogInUsers/User_Secretary.java</file>
         </group>
     </open-files>
 </project-private>

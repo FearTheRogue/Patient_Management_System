@@ -18,10 +18,9 @@ public class User_Secretary extends javax.swing.JFrame {
         initComponents();
     }
     
-    public User_Secretary(String userID, String username){
+    public User_Secretary(String userID){
         initComponents();
         secretary_id_lbl.setText(userID);
-        secretary_name_lbl.setText(username);
     }
 
     /**

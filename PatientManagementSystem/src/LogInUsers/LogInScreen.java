@@ -5,9 +5,18 @@
  */
 package LogInUsers;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import patientmanagementsystem.ReadJSONFile;
 import patientmanagementsystem.WriteJSONFile;
 import patientmanagementsystem.login_CreateAcc;
@@ -18,6 +27,7 @@ import patientmanagementsystem.login_CreateAcc;
  */
 public class LogInScreen extends javax.swing.JFrame {
 
+    //private boolean isUser;
     private ReadJSONFile read = new ReadJSONFile();
     /**
      * Creates new form LogInScreen
@@ -25,8 +35,7 @@ public class LogInScreen extends javax.swing.JFrame {
     public LogInScreen() {
         initComponents();
         ClearText();
-        read.ReadInUsers();
-        
+        //read.ReadInUsers();
     }
 
     /**
@@ -175,7 +184,7 @@ public class LogInScreen extends javax.swing.JFrame {
     private void Login_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_btnActionPerformed
         //CheckDetails();
         //LoggingIn();
-        newLoggingIn();
+        CheckLoginUser();
     }//GEN-LAST:event_Login_btnActionPerformed
 
     private void Exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Exit_btnActionPerformed
@@ -227,23 +236,51 @@ public class LogInScreen extends javax.swing.JFrame {
         new LogInScreen().setVisible(true);
     }
 
-    private void newLoggingIn(){
+    private void CheckLoginUser(){
         
-        String users = read.users;
-        String userID = read.UserID;
-        String password = read.Password;
+        read.ReadInPatientsDetails();
+        read.ReadInDoctorsDetails();
         
-        String inputID = User_txt.getText();
+        String inputID = User_txt.getText().toLowerCase();
         String inputPW = Password_pfield.getText();
         
-        System.out.println("from login " + users);
-        
-        if(userID.equals(inputID)){
-            if(password.equals(inputPW)){
-                System.out.println("Account is true");
+        if(read.ReadInUsers(inputID, inputPW)){
+            System.out.println("login");
+            
+            char firstLetter = inputID.charAt(0);
+            
+            switch(firstLetter){
+                case 'a':
+                    User_Administrator Admin = new User_Administrator(inputID);
+                    Admin.setVisible(true);
+                    CloseLogin();
+                    break;
+                case 's':
+                    User_Secretary Secretary = new User_Secretary(inputID);
+                    Secretary.setVisible(true);
+                    CloseLogin();
+                    break;
+                case 'd':
+                    User_Doctor Doctor = new User_Doctor(inputID);
+                    Doctor.setVisible(true);
+                    CloseLogin();
+                    break;
+                case 'p':
+                    User_Patient Patient = new User_Patient(inputID);
+                    Patient.setVisible(true);
+                    CloseLogin();
+                    break;
             }
         }
-        
+        else 
+        {
+            System.out.println("Invalid username or password");
+              JOptionPane.showMessageDialog(null, "Invalid Login Details", 
+                "Login Error", JOptionPane.ERROR_MESSAGE);
+            ClearText();
+            
+            System.out.println("enter correct detials");
+        } 
     }
     
     private void LoggingIn(){
@@ -272,7 +309,7 @@ public class LogInScreen extends javax.swing.JFrame {
             if(user.getUserID().equals(userId)) {
                 if(user.getPassword().equals(password)){
                     loggedInUser = user;
-                    EnterUser(user);
+                    //EnterUser(user);
                     System.out.println("Found user account");
                     break; 
                 }
@@ -290,6 +327,7 @@ public class LogInScreen extends javax.swing.JFrame {
         }
     }
     
+    /*
     private void EnterUser(User user){
         
         switch (user.getUserID()) {
@@ -336,7 +374,7 @@ public class LogInScreen extends javax.swing.JFrame {
             default:
                 break;
         }
-    }
+    }*/
     
     private void ClearText()
     {

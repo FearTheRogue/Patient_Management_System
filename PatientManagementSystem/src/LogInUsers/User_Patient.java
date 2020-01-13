@@ -21,11 +21,10 @@ public class User_Patient extends javax.swing.JFrame {
         initComponents();
     }
     
-    public User_Patient(String userID, String username){
+    public User_Patient(String userID){
         initComponents();
         patient_id_lbl.setText(userID);
-        patient_name_lbl.setText(username);
-        PatientsData();
+        //PatientsData();
     }
 
     /**

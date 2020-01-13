@@ -1,0 +1,18 @@
+{
+    "Admins": [
+        "a,James,Plymouth"
+    ],
+    "Secretarys": [
+        "s,Sarah,London"
+    ],
+    "Doctors":[
+        "d1,Dr.Ian Parks,Plymouth",
+        "d2,Dr.Rachael McAdams,Newton Abbot",
+        "d3,Dr.Steven Strange,Baker Street"
+    ],
+    "Patients": [
+        "p1,Rhea Ireland,Barnstaple,Female,23",
+        "p2,Jon Snow,Winkleigh,Male,68",
+        "p3,Izzy Cambridge,Exeter,Female,55"
+    ]    
+}
