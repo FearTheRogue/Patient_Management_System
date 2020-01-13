@@ -224,51 +224,50 @@ public class LogInScreen extends javax.swing.JFrame {
     
     private void CheckDetails()
     {
-        String userID = User_txt.getText().toLowerCase();
-        System.out.println(userID);
+        String inputUsername = User_txt.getText().toLowerCase();
+        System.out.println(inputUsername);
         
-        String password = Password_pfield.getText();
-        System.out.println(password);
+        String inputPassword = Password_pfield.getText();
+        System.out.println(inputPassword);
         
         char letter;
-        letter = userID.charAt(0);
+        letter = inputUsername.charAt(0);
         
         System.out.println(letter);
         
-        //if()
         
-        if(userID.startsWith("a") && password.startsWith("1"))
+        if(inputUsername.startsWith("a") && inputPassword.startsWith("1"))
         {
             System.out.println("This is the admin page");
-            
-            User_Administrator Admin = new User_Administrator(userID);
+                    
+            User_Administrator Admin = new User_Administrator(inputUsername);
             Admin.setVisible(true);
             
             CloseLogin();
         }
-        else if(userID.startsWith("s") && password.startsWith("2"))
+        else if(inputUsername.startsWith("s") && inputPassword.startsWith("2"))
         {
             System.out.println("This is the secretary page");
             
-            User_Secretary Secretary = new User_Secretary(userID);
+            User_Secretary Secretary = new User_Secretary(inputUsername);
             Secretary.setVisible(true);
             
             CloseLogin();
         }
-        else if(userID.startsWith("d") && password.startsWith("3"))
+        else if(inputUsername.startsWith("d") && inputPassword.startsWith("3"))
         {
             System.out.println("This is the doctors page");
             
-            User_Doctor Doctor = new User_Doctor(userID);
+            User_Doctor Doctor = new User_Doctor(inputUsername);
             Doctor.setVisible(true);
             
             CloseLogin();
         }
-        else if(userID.startsWith("p") && password.startsWith("4"))
+        else if(inputUsername.startsWith("p") && inputPassword.startsWith("4"))
         {
             System.out.println("This is the patients page");
             
-            User_Patient Patient = new User_Patient(userID);
+            User_Patient Patient = new User_Patient(inputUsername);
             Patient.setVisible(true);
             
             CloseLogin();
