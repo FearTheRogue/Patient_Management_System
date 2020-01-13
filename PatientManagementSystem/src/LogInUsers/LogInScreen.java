@@ -5,7 +5,11 @@
  */
 package LogInUsers;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import patientmanagementsystem.ReadJSONFile;
+import patientmanagementsystem.WriteJSONFile;
 import patientmanagementsystem.login_CreateAcc;
 
 /**
@@ -14,12 +18,15 @@ import patientmanagementsystem.login_CreateAcc;
  */
 public class LogInScreen extends javax.swing.JFrame {
 
+    private ReadJSONFile read = new ReadJSONFile();
     /**
      * Creates new form LogInScreen
      */
     public LogInScreen() {
         initComponents();
         ClearText();
+        read.ReadInUsers();
+        
     }
 
     /**
@@ -166,7 +173,9 @@ public class LogInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_User_txtActionPerformed
 
     private void Login_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_btnActionPerformed
-        CheckDetails();
+        //CheckDetails();
+        //LoggingIn();
+        newLoggingIn();
     }//GEN-LAST:event_Login_btnActionPerformed
 
     private void Exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Exit_btnActionPerformed
@@ -211,17 +220,131 @@ public class LogInScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogInScreen().setVisible(true);
+                
             }
         });
+        
+        new LogInScreen().setVisible(true);
     }
 
+    private void newLoggingIn(){
+        
+        String users = read.users;
+        String userID = read.UserID;
+        String password = read.Password;
+        
+        String inputID = User_txt.getText();
+        String inputPW = Password_pfield.getText();
+        
+        System.out.println("from login " + users);
+        
+        if(userID.equals(inputID)){
+            if(password.equals(inputPW)){
+                System.out.println("Account is true");
+            }
+        }
+        
+    }
+    
+    private void LoggingIn(){
+        String userId;
+        String password;
+        
+        User loggedInUser = null;
+        
+        List<User> listOfUsers = new ArrayList<>();
+        
+        listOfUsers.add(new User("a", "1", "Admin"));
+        listOfUsers.add(new User("s", "2", "Secretary"));
+        listOfUsers.add(new User("d1", "31", "DR. Park"));
+        listOfUsers.add(new User("d2", "32", "DR. Bench"));
+        listOfUsers.add(new User("d3", "33", "DR. Water"));
+        listOfUsers.add(new User("p1", "41", "Patrick"));
+        listOfUsers.add(new User("p2", "42", "Penny"));
+        listOfUsers.add(new User("p3", "43", "Peter"));
+        
+        //WriteJSONFile file = new WriteJSONFile(listOfUsers);
+        
+        userId = User_txt.getText().toLowerCase();
+        password = Password_pfield.getText();
+        
+        for(User user : listOfUsers){
+            if(user.getUserID().equals(userId)) {
+                if(user.getPassword().equals(password)){
+                    loggedInUser = user;
+                    EnterUser(user);
+                    System.out.println("Found user account");
+                    break; 
+                }
+            }
+        }
+        
+        if(loggedInUser != null){
+            System.out.println("User Found: " + loggedInUser.getUserID());
+        } 
+        else{
+            System.out.println("Invalid username or password");
+              JOptionPane.showMessageDialog(null, "Invalid Login Details", 
+                "Login Error", JOptionPane.ERROR_MESSAGE);
+        ClearText();
+        }
+    }
+    
+    private void EnterUser(User user){
+        
+        switch (user.getUserID()) {
+            case "a":
+                User_Administrator Admin = new User_Administrator(user.getUserID(), user.getUserName());
+                Admin.setVisible(true);
+                CloseLogin();
+                break;
+            case "s":
+                User_Secretary Secretary = new User_Secretary(user.getUserID(), user.getUserName());
+                Secretary.setVisible(true);
+                CloseLogin();
+                break;
+            case "d1":
+                User_Doctor Doctor1 = new User_Doctor(user.getUserID(), user.getUserName());
+                Doctor1.setVisible(true);
+                CloseLogin();
+                break;  
+            case "d2":
+                User_Doctor Doctor2 = new User_Doctor(user.getUserID(), user.getUserName());
+                Doctor2.setVisible(true);
+                CloseLogin();
+                break;
+            case "d3":
+                User_Doctor Doctor3 = new User_Doctor(user.getUserID(), user.getUserName());
+                Doctor3.setVisible(true);
+                CloseLogin();
+                break;
+            case "p1":
+                User_Patient Patient1 = new User_Patient(user.getUserID(), user.getUserName());
+                Patient1.setVisible(true);
+                CloseLogin();
+                break;
+            case "p2":
+                User_Patient Patient2 = new User_Patient(user.getUserID(), user.getUserName());
+                Patient2.setVisible(true);
+                CloseLogin();
+                break;
+            case "p3":
+                User_Patient Patient3 = new User_Patient(user.getUserID(), user.getUserName());
+                Patient3.setVisible(true);
+                CloseLogin();
+                break;
+            default:
+                break;
+        }
+    }
+    
     private void ClearText()
     {
         User_txt.setText(null);
         Password_pfield.setText(null);
     }
     
+    /*
     private void CheckDetails()
     {
         String inputUsername = User_txt.getText().toLowerCase();
@@ -229,14 +352,8 @@ public class LogInScreen extends javax.swing.JFrame {
         
         String inputPassword = Password_pfield.getText();
         System.out.println(inputPassword);
-        
-        char letter;
-        letter = inputUsername.charAt(0);
-        
-        System.out.println(letter);
-        
-        
-        if(inputUsername.startsWith("a") && inputPassword.startsWith("1"))
+               
+        if(inputUsername.equals("a") && inputPassword.equals("1"))
         {
             System.out.println("This is the admin page");
                     
@@ -278,7 +395,7 @@ public class LogInScreen extends javax.swing.JFrame {
                 "Login Error", JOptionPane.ERROR_MESSAGE);
         ClearText();
         }
-    }
+    } */
     
     private void CloseLogin() {
         this.setVisible(false);

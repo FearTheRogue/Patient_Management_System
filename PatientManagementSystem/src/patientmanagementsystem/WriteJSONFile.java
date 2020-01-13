@@ -5,8 +5,11 @@
  */
 package patientmanagementsystem;
 
+import LogInUsers.User;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -16,6 +19,13 @@ import org.json.simple.JSONObject;
  */
 public class WriteJSONFile {
 
+      JSONObject getUser(String userID, String password){
+        JSONObject person = new JSONObject();
+        person.put("UserID", userID);
+        person.put("Password",password);
+        return person;
+    }
+    
     public void WriteJSONFile() {
         
         JSONArray Admins = new JSONArray();
@@ -84,6 +94,47 @@ public class WriteJSONFile {
         {
            e.printStackTrace();
         }
+    }
+    
+    //public void WriteUsers(){
+        
+       //         List<User> listOfUsers = new ArrayList<>();
+        
+       // listOfUsers.add(new User("a", "1", "Admin"));
+       // listOfUsers.add(new User("s", "2", "Secretary"));
+        //listOfUsers.add(new User("d1", "31", "DR. Park"));
+       // listOfUsers.add(new User("d2", "32", "DR. Bench"));
+       // listOfUsers.add(new User("d3", "33", "DR. Water"));
+       // listOfUsers.add(new User("p1", "41", "Patrick"));
+       // listOfUsers.add(new User("p2", "42", "Penny"));
+       // listOfUsers.add(new User("p3", "43", "Peter"));
+        
+       // JSONObject obj = new JSONObject();
+       // obj.putAll(obj);
+        
+        
+       // JSONArray array = new JSONArray();
+        
+   // }
+    
+    
+    public JSONObject getJSONResponse(){
+
+        JSONArray doctors = new JSONArray();
+        doctors.add(getUser("d1", "31"));
+        doctors.add(getUser("d2", "32"));
+        doctors.add(getUser("d3", "33"));
+        
+        JSONArray patients = new JSONArray();
+        doctors.add(getUser("d1", "31"));
+        doctors.add(getUser("d2", "32"));
+        doctors.add(getUser("d3", "33"));
+        
+        JSONObject response = new JSONObject();
+        response.put("doctors", doctors);
+        response.put("patients", patients);
+        
+        return response;
     }
     
     public void AddPatient(String name, String address){

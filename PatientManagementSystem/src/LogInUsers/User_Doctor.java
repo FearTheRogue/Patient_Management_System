@@ -18,9 +18,10 @@ public class User_Doctor extends javax.swing.JFrame {
         initComponents();
     }
 
-    public User_Doctor(String userID) {
+    public User_Doctor(String userID, String username) {
         initComponents();
         doctor_id_lbl.setText(userID);
+        doctor_name_lbl.setText(username);
     }
     
     /**

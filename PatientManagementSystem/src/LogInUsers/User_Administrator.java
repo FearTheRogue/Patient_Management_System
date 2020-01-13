@@ -18,10 +18,11 @@ public class User_Administrator extends javax.swing.JFrame {
         initComponents();
     }
     
-    public User_Administrator(String userID)
+    public User_Administrator(String userID, String userName)
     {
         initComponents();
         admin_id_lbl.setText(userID);
+        admin_name_lbl.setText(userName);
         FillOutDetails();
     }
     /**
@@ -267,8 +268,8 @@ public class User_Administrator extends javax.swing.JFrame {
     }
 
     private void FillOutDetails(){
-        admin_name_lbl.setText("Auther");
-        admin_address_lbl.setText("Plymouth");
+        //admin_name_lbl.setText("Authur");
+        //admin_address_lbl.setText("Plymouth");
         
     }
     

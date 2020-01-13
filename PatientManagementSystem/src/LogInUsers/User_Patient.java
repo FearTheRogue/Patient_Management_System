@@ -21,9 +21,10 @@ public class User_Patient extends javax.swing.JFrame {
         initComponents();
     }
     
-    public User_Patient(String userID){
+    public User_Patient(String userID, String username){
         initComponents();
         patient_id_lbl.setText(userID);
+        patient_name_lbl.setText(username);
         PatientsData();
     }
 
@@ -295,18 +296,9 @@ public class User_Patient extends javax.swing.JFrame {
             }
         });
     }
-
-    private void FillData(){
-        int userID = 0;
-        ReadJSONFile file = new ReadJSONFile(userID);
-        
-        //file.
-        
-        
-    }
     
     private void PatientsData(){
-        patient_name_lbl.setText(null);
+        //patient_name_lbl.setText(null);
         patient_address_lbl.setText(null);
         patient_gender_lbl.setText(null);
         patient_age_lbl.setText(null);

@@ -257,9 +257,9 @@ public class login_CreateAcc extends javax.swing.JFrame {
 
     private void CreateNewAccount(){
         
-        WriteJSONFile file = new WriteJSONFile();
+        //WriteJSONFile file = new WriteJSONFile();
         
-        file.AddPatient(patient_name_txt.getText(), patient_address_txt.getText());
+       // file.AddPatient(patient_name_txt.getText(), patient_address_txt.getText());
         
        // WriteJSONFile file = new WriteJSONFile(patient_name_txt.getText(), patient_address_txt.getText());
         

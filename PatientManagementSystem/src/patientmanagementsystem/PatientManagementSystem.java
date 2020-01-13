@@ -10,14 +10,13 @@ package patientmanagementsystem;
  * @author jbridgman2
  */
 public class PatientManagementSystem {
-
     /**
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         new LogInUsers.LogInScreen().setVisible(true);
         
-        WriteJSONFile file = new WriteJSONFile();
-        System.out.println("System written to file");
+        System.out.println("System read from file");
     }
 }
