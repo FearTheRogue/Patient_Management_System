@@ -49,6 +49,8 @@ public class ReadJSONFile {
                 Pattern pat = Pattern.compile(", *");
                 Matcher match = pat.matcher(users);
                 
+                System.out.println(i + " " + users);
+                
                 if(match.find()){
                     UserID = users.substring(0,match.start());
                     Password = users.substring(match.end());
@@ -57,7 +59,7 @@ public class ReadJSONFile {
                 System.out.println("userid " + UserID);  
                 System.out.println("password " + Password);
                 
-                
+              
                 iterator.next();
                 i++;
             
