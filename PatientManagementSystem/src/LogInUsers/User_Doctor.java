@@ -5,12 +5,22 @@
  */
 package LogInUsers;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import patientmanagementsystem.ReadJSONFile;
+
 /**
  *
  * @author jbridgman2
  */
 public class User_Doctor extends javax.swing.JFrame {
 
+    ReadJSONFile read = new ReadJSONFile();
     /**
      * Creates new form User_Doctor
      */
@@ -20,7 +30,63 @@ public class User_Doctor extends javax.swing.JFrame {
 
     public User_Doctor(String userID) {
         initComponents();
-        doctor_id_lbl.setText(userID);
+        
+        ReadInDoctorsDetails(userID);
+    }
+    
+    public User_Doctor(String name, String address){
+        initComponents();
+        doctor_name_lbl.setText(name);
+        doctor_address_lbl.setText(address);
+        
+        System.out.println("d name " + name);
+        System.out.println("d address " + address);
+    }
+    
+    private void ReadInDoctorsDetails(String ID){
+            
+        JSONParser parser = new JSONParser();
+        
+        try {
+            
+            JSONObject jsonObject = (JSONObject)parser.parse(new FileReader("src\\\\JSONFiles\\\\UserDetails.json"));
+            
+            JSONArray doctorsArray = (JSONArray) jsonObject.get("Doctors");
+            Iterator<String> iterator = doctorsArray.iterator();
+            
+            System.out.println(doctorsArray);
+            
+            int i = 0;
+            while(iterator.hasNext()){
+                String id = (String)doctorsArray.get(i);
+                String name = (String)doctorsArray.get(i);
+                String address = (String)doctorsArray.get(i);
+
+                System.out.println("user " + i);
+                id = iterator.next();
+                name = iterator.next();
+                address = iterator.next();
+                
+                System.out.println("id " + id);
+                System.out.println("name " + name);
+                System.out.println("address " + address);
+                
+                if(id.equals(ID)){
+                    System.out.println("doctor id " + ID);
+                    doctor_id_lbl.setText(id);
+                    doctor_name_lbl.setText(name);
+                    doctor_address_lbl.setText(address);
+                    
+                    return;
+                }
+                
+                i++;
+            }
+        }
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        //catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}
     }
     
     /**
@@ -100,10 +166,12 @@ public class User_Doctor extends javax.swing.JFrame {
                     .addComponent(Address_lbl))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(doctor_id_lbl)
-                    .addComponent(doctor_name_lbl)
-                    .addComponent(doctor_address_lbl))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(doctor_id_lbl)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(doctor_name_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(doctor_address_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,10 +356,10 @@ public class User_Doctor extends javax.swing.JFrame {
     private javax.swing.JButton Logout_btn;
     private javax.swing.JLabel Name_lbl;
     private javax.swing.JLabel UserID_lbl;
-    private javax.swing.JLabel doctor_address_lbl;
+    private static javax.swing.JLabel doctor_address_lbl;
     private javax.swing.JLabel doctor_id_lbl;
     private javax.swing.JLabel doctor_lbl;
-    private javax.swing.JLabel doctor_name_lbl;
+    private static javax.swing.JLabel doctor_name_lbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

@@ -238,8 +238,8 @@ public class LogInScreen extends javax.swing.JFrame {
 
     private void CheckLoginUser(){
         
-        read.ReadInPatientsDetails();
-        read.ReadInDoctorsDetails();
+        //read.ReadInPatientsDetails();
+        //read.ReadInDoctorsDetails();
         
         String inputID = User_txt.getText().toLowerCase();
         String inputPW = Password_pfield.getText();
@@ -249,6 +249,7 @@ public class LogInScreen extends javax.swing.JFrame {
             
             char firstLetter = inputID.charAt(0);
             
+            // STRAT PATTERN
             switch(firstLetter){
                 case 'a':
                     User_Administrator Admin = new User_Administrator(inputID);

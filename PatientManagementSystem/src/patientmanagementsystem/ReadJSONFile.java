@@ -5,6 +5,7 @@
  */
 package patientmanagementsystem;
 
+import LogInUsers.User_Doctor;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -132,7 +133,7 @@ public class ReadJSONFile {
         catch (Exception e) {e.printStackTrace();}
     }
         
-    public void ReadInDoctorsDetails(){
+    public void ReadInDoctorsDetails(String ID, String Name, String Address){
         String dUserID = null;
         String dUsername = null;
         String dAddress = null;
@@ -140,35 +141,60 @@ public class ReadJSONFile {
         JSONParser parser = new JSONParser();
         
         try {
-            Object obj = parser.parse(new FileReader("src\\JSONFiles\\UserDetails.json"));
-            JSONObject jsonObject = (JSONObject)obj;
+            //Object obj = parser.parse(new FileReader("src\\JSONFiles\\UserDetails.json"));
+            JSONObject jsonObject = (JSONObject)parser.parse(new FileReader("src\\\\JSONFiles\\\\UserDetails.json"));
             
             JSONArray doctorsArray = (JSONArray) jsonObject.get("Doctors");
             Iterator<String> iterator = doctorsArray.iterator();
             
+            System.out.println(doctorsArray);
+            
             int i = 0;
             while(iterator.hasNext()){
-                String details = (String)doctorsArray.get(i);
+                String id = (String)doctorsArray.get(i);
+                String name = (String)doctorsArray.get(i);
+                String address = (String)doctorsArray.get(i);
                 
-                System.out.println(details);
-                
-                Pattern pat = Pattern.compile(",,*");
-                Matcher match = pat.matcher(details);
-                
-                System.out.println(pat.matcher(details));
-                
-                if(match.find()){
-                    dUserID = details.substring(0, match.start());
-                    dUsername = details.substring(match.end());
-                    dAddress = details.substring(match.end());
-                }
-
-                System.out.println("User: " + dUserID);
-                System.out.println("Username: " + dUsername);
-                System.out.println("Address: " + dAddress);
                 
                 //System.out.println(details);
-                iterator.next();
+                
+                //Pattern pat = Pattern.compile(",,*");
+                //Matcher match = pat.matcher(details);
+                
+                //System.out.println(pat.matcher(details));
+                
+                //if(match.find()){
+                   // dUserID = details.substring(0, match.start());
+                   // dUsername = details.substring(match.end());
+                    //dAddress = details.substring(match.end());
+                //}
+                System.out.println("user " + i);
+                id = iterator.next();
+                name = iterator.next();
+                address = iterator.next();
+                
+                System.out.println("id " + id);
+                System.out.println("name " + name);
+                System.out.println("address " + address);
+                
+                if(id.equals(ID)){
+                    System.out.println("doctor id " + ID);
+                    Name = name;
+                    Address = address;
+                    
+                    return;
+                }
+                
+                //System.out.println("id " +jsonObject.get("ID"));
+                //System.out.println(jsonObject.get("Username"));
+                //System.out.println(jsonObject.get("Address"));
+                
+                //System.out.println("User: " + dUserID);
+                //System.out.println("Username: " + dUsername);
+                //System.out.println("Address: " + dAddress);
+                
+                //System.out.println(details);
+                //iterator.next();
                 i++;
             }
         }

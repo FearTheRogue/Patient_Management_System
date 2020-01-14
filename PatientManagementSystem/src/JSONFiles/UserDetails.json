@@ -1,14 +1,24 @@
 {
     "Admins": [
-        "a,James,Plymouth"
+{
+        "ID":"a",
+        "Username":"James",
+        "Address":"Plymouth"
+        }
     ],
     "Secretarys": [
         "s,Sarah,London"
     ],
-    "Doctors":[
-        "d1,Dr.Ian Parks,Plymouth",
-        "d2,Dr.Rachael McAdams,Newton Abbot",
-        "d3,Dr.Steven Strange,Baker Street"
+    "Doctors": [
+        "d1",
+        "Dr.Ian Parks",
+        "Plymouth",
+        "d2",
+        "Dr.Rachael McAdams",
+        "Newton Abbot",
+        "d3",
+        "Dr.Steven Strange",
+        "Baker Street"
     ],
     "Patients": [
         "p1,Rhea Ireland,Barnstaple,Female,23",

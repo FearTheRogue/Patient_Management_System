@@ -102,11 +102,14 @@
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="doctor_id_lbl" min="-2" max="-2" attributes="0"/>
-                      <Component id="doctor_name_lbl" min="-2" max="-2" attributes="0"/>
-                      <Component id="doctor_address_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="doctor_id_lbl" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="doctor_name_lbl" alignment="0" max="32767" attributes="0"/>
+                      <Component id="doctor_address_lbl" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -149,6 +152,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="doctor_name"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="doctor_address_lbl">
           <Properties>
@@ -157,6 +163,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="doctor_address"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="Address_lbl">
           <Properties>
