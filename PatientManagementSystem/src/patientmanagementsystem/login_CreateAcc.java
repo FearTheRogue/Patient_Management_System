@@ -292,26 +292,4 @@ public class login_CreateAcc extends javax.swing.JFrame {
         patient_name_txt.setText(null);
         patient_address_txt.setText(null);
     }   
-
-    /*private void ReadJSONFile(){
-        
-        JSONParser parser = new JSONParser();
-        
-        try 
-        {
-            Object obj = parser.parse(new FileReader("myJSON.json"));
-            JSONObject jsonObject = (JSONObject) obj;
-            String id = (String)jsonObject.get("id");
-            System.out.println("id is: "  + id);
-        } 
-        catch (FileNotFoundException e) {e.printStackTrace();}
-        catch (IOException e) {e.printStackTrace();}
-        //catch (ParseException e) {e.printStackTrace();}
-        catch (Exception e) {e.printStackTrace();}  
-    }
-    
-    private void WriteJSONFile(){
-              
-        
-    }*/
 }

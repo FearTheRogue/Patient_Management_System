@@ -5,7 +5,14 @@
  */
 package LogInUsers;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import patientmanagementsystem.ReadJSONFile;
 
 /**
@@ -23,8 +30,7 @@ public class User_Patient extends javax.swing.JFrame {
     
     public User_Patient(String userID){
         initComponents();
-        patient_id_lbl.setText(userID);
-        //PatientsData();
+        ReadInPatientDetails(userID);
     }
 
     /**
@@ -296,12 +302,52 @@ public class User_Patient extends javax.swing.JFrame {
         });
     }
     
-    private void PatientsData(){
-        //patient_name_lbl.setText(null);
-        patient_address_lbl.setText(null);
-        patient_gender_lbl.setText(null);
-        patient_age_lbl.setText(null);
+    private void ReadInPatientDetails(String ID){
+            
+        JSONParser parser = new JSONParser();
+        
+        try {
+            
+            JSONObject jsonObject = (JSONObject)parser.parse(new FileReader("src\\\\JSONFiles\\\\UserDetails.json"));
+            
+            JSONArray patientArray = (JSONArray) jsonObject.get("Patients");
+            Iterator<String> iterator = patientArray.iterator();
+            
+            System.out.println(patientArray);
+            
+            int i = 0;
+            while(iterator.hasNext()){
+                String id = (String)patientArray.get(i);
+                String name = (String)patientArray.get(i);
+                String address = (String)patientArray.get(i);
+                String gender = (String)patientArray.get(i);
+                String age = (String)patientArray.get(i);
+                
+                System.out.println("user " + i);
+                id = iterator.next();
+                name = iterator.next();
+                address = iterator.next();
+                gender = iterator.next();
+                age = iterator.next();
+                
+                if(id.equals(ID)){
+                    patient_id_lbl.setText(id);
+                    patient_name_lbl.setText(name);
+                    patient_address_lbl.setText(address);
+                    patient_gender_lbl.setText(gender);
+                    patient_age_lbl.setText(age);
+                    return;
+                }
+                
+                i++;
+            }
+        }
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        //catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}
     }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Logout_btn;

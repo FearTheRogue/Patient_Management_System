@@ -5,6 +5,19 @@
  */
 package LogInUsers;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Iterator;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import patientmanagementsystem.admin_CreateOwnAccount;
+import patientmanagementsystem.admin_add_remove;
+import patientmanagementsystem.admin_provideFeedback;
+import patientmanagementsystem.admin_viewRatings;
+
 /**
  *
  * @author jbridgman2
@@ -21,8 +34,8 @@ public class User_Administrator extends javax.swing.JFrame {
     public User_Administrator(String userID)
     {
         initComponents();
-        admin_id_lbl.setText(userID);
-        FillOutDetails();
+
+        ReadInAdminDetails(userID);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -209,18 +222,23 @@ public class User_Administrator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void add_remove_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_remove_btnActionPerformed
-        // TODO add your handling code here:
+        admin_add_remove add = new admin_add_remove();
+        add.setVisible(true);
     }//GEN-LAST:event_add_remove_btnActionPerformed
 
     private void viewRatings_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRatings_btnActionPerformed
-        // TODO add your handling code here:
+        admin_viewRatings view = new admin_viewRatings();
+        view.setVisible(true);
     }//GEN-LAST:event_viewRatings_btnActionPerformed
 
     private void feedback_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedback_btnActionPerformed
-        // TODO add your handling code here:
+        admin_provideFeedback fb = new admin_provideFeedback();
+        fb.setVisible(true);
     }//GEN-LAST:event_feedback_btnActionPerformed
 
     private void createAccount_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccount_btnActionPerformed
+        admin_CreateOwnAccount add = new admin_CreateOwnAccount();
+        add.setVisible(true);
         
     }//GEN-LAST:event_createAccount_btnActionPerformed
 
@@ -230,6 +248,44 @@ public class User_Administrator extends javax.swing.JFrame {
         LogIn.setVisible(true);
     }//GEN-LAST:event_LogOut_btnActionPerformed
 
+    private void ReadInAdminDetails(String ID){
+            
+        JSONParser parser = new JSONParser();
+        
+        try {
+            
+            JSONObject jsonObject = (JSONObject)parser.parse(new FileReader("src\\\\JSONFiles\\\\UserDetails.json"));
+            
+            JSONArray adminsArray = (JSONArray) jsonObject.get("Admins");
+            Iterator<String> iterator = adminsArray.iterator();
+            
+            System.out.println(adminsArray);
+            
+            int i = 0;
+            while(iterator.hasNext()){
+                String id = (String)adminsArray.get(i);
+                String name = (String)adminsArray.get(i);
+                String address = (String)adminsArray.get(i);
+
+                id = iterator.next();
+                name = iterator.next();
+                address = iterator.next();
+              
+                if(id.equals(ID)){
+                    admin_id_lbl.setText(id);
+                    admin_name_lbl.setText(name);
+                    admin_address_lbl.setText(address);
+                    return;
+                }
+                i++;
+            }
+        }
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        //catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -264,12 +320,6 @@ public class User_Administrator extends javax.swing.JFrame {
                 new User_Administrator().setVisible(true);
             }
         });
-    }
-
-    private void FillOutDetails(){
-        //admin_name_lbl.setText("Authur");
-        //admin_address_lbl.setText("Plymouth");
-        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

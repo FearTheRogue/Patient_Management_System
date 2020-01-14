@@ -5,6 +5,18 @@
  */
 package LogInUsers;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import patientmanagementsystem.sec_approve;
+import patientmanagementsystem.sec_createAppointments;
+import patientmanagementsystem.sec_giveMeds;
+import patientmanagementsystem.sec_request;
+
 /**
  *
  * @author jbridgman2
@@ -20,7 +32,7 @@ public class User_Secretary extends javax.swing.JFrame {
     
     public User_Secretary(String userID){
         initComponents();
-        secretary_id_lbl.setText(userID);
+        ReadInSecretaryDetails(userID);
     }
 
     /**
@@ -41,10 +53,10 @@ public class User_Secretary extends javax.swing.JFrame {
         SecretaryName_lbl = new javax.swing.JLabel();
         SecretaryUserID_lbl = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        approve_btn = new javax.swing.JButton();
+        request_btn = new javax.swing.JButton();
+        create_btn = new javax.swing.JButton();
+        giveMed_btn = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -112,17 +124,37 @@ public class User_Secretary extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Approve Patient accounts");
+        approve_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        approve_btn.setText("Approve Patient accounts");
+        approve_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                approve_btnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Requests for Appointments");
+        request_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        request_btn.setText("Requests for Appointments");
+        request_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                request_btnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("Create Appointment");
+        create_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        create_btn.setText("Create Appointment");
+        create_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                create_btnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setText("Give medicines");
+        giveMed_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        giveMed_btn.setText("Give medicines");
+        giveMed_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giveMed_btnActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton5.setText("Remove Patients");
@@ -136,28 +168,28 @@ public class User_Secretary extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(approve_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(create_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
+                    .addComponent(giveMed_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(approve_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(giveMed_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(request_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(create_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -222,6 +254,26 @@ public class User_Secretary extends javax.swing.JFrame {
         LogIn.setVisible(true);
     }//GEN-LAST:event_Logout_btnActionPerformed
 
+    private void approve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approve_btnActionPerformed
+       sec_approve approve = new sec_approve();
+       approve.setVisible(true);
+    }//GEN-LAST:event_approve_btnActionPerformed
+
+    private void request_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_request_btnActionPerformed
+        sec_request request = new sec_request();
+        request.setVisible(true);
+    }//GEN-LAST:event_request_btnActionPerformed
+
+    private void create_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create_btnActionPerformed
+        sec_createAppointments create = new sec_createAppointments();
+        create.setVisible(true);
+    }//GEN-LAST:event_create_btnActionPerformed
+
+    private void giveMed_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giveMed_btnActionPerformed
+        sec_giveMeds give = new sec_giveMeds();
+        give.setVisible(true);
+    }//GEN-LAST:event_giveMed_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,22 +309,62 @@ public class User_Secretary extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void ReadInSecretaryDetails(String ID){
+            
+        JSONParser parser = new JSONParser();
+        
+        try {
+            
+            JSONObject jsonObject = (JSONObject)parser.parse(new FileReader("src\\\\JSONFiles\\\\UserDetails.json"));
+            
+            JSONArray secretaryArray = (JSONArray) jsonObject.get("Secretarys");
+            Iterator<String> iterator = secretaryArray.iterator();
+            
+            System.out.println(secretaryArray);
+            
+            int i = 0;
+            while(iterator.hasNext()){
+                String id = (String)secretaryArray.get(i);
+                String name = (String)secretaryArray.get(i);
+                String address = (String)secretaryArray.get(i);
+
+                System.out.println("user " + i);
+                id = iterator.next();
+                name = iterator.next();
+                address = iterator.next();
+                
+                if(id.equals(ID)){
+                    secretary_id_lbl.setText(id);
+                    secretary_name_lbl.setText(name);
+                    secretary_address_lbl.setText(address);
+                    return;
+                }
+                
+                i++;
+            }
+        }
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        //catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Logout_btn;
     private javax.swing.JLabel SecretaryAddress_lbl;
     private javax.swing.JLabel SecretaryName_lbl;
     private javax.swing.JLabel SecretaryUserID_lbl;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton approve_btn;
+    private javax.swing.JButton create_btn;
+    private javax.swing.JButton giveMed_btn;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton request_btn;
     private javax.swing.JLabel secretary_address_lbl;
     private javax.swing.JLabel secretary_id_lbl;
     private javax.swing.JLabel secretary_name_lbl;

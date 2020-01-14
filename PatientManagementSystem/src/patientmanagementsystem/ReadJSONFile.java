@@ -24,8 +24,7 @@ public class ReadJSONFile {
     public String users;
     public String UserID;
     public String Password;
-    //private boolean isUser = false;
-    
+
     public boolean ReadInUsers(String id, String pw) {
         
         JSONParser parser = new JSONParser();
@@ -37,11 +36,6 @@ public class ReadJSONFile {
             
             JSONArray usersArray = (JSONArray) jsonObject.get("users");
             Iterator<String> iterator = usersArray.iterator();
-            
-            //String id = (String) jsonObject.get("id");
-           //System.out.println("id is: "  + id);
-            //String pass = (String) jsonObject.get("pass");
-            //System.out.println("password is: " + pass);
 
             int i = 0;
             while(iterator.hasNext()){
@@ -50,8 +44,6 @@ public class ReadJSONFile {
                 
                 Pattern pat = Pattern.compile(", *");
                 Matcher match = pat.matcher(users);
-                
-                //System.out.println(i + " " + users);
                 
                 if(match.find()){
                     UserID = users.substring(0,match.start());
@@ -62,17 +54,10 @@ public class ReadJSONFile {
                     System.out.println("Account " + UserID + " Has the password " + Password);
                     return true;
                 } 
-                
-                //System.out.println("userid " + UserID);  
-                //System.out.println("password " + Password);
-                
                 iterator.next();
                 i++;
                 
             }
-            
-            //System.out.println("All users have been read in");
-            //System.out.println(usersArray);
         } 
         catch (FileNotFoundException e) {e.printStackTrace();}
         catch (IOException e) {e.printStackTrace();}
@@ -81,7 +66,13 @@ public class ReadJSONFile {
         return false;  
     }
     
-        public void ReadInPatientsDetails(){
+    /**
+     *  I did try to leave the Reading in patient JSON file in this class,
+     *  However it didn't like to pass over the rest of the data
+     *  i.e. name & address & gender & age
+     */
+    /*
+    public void ReadInPatientsDetails(){
         String pUserID = null;
         String pUsername = null;
         String pAddress = null;
@@ -132,7 +123,14 @@ public class ReadJSONFile {
         //catch (ParseException e) {e.printStackTrace();}
         catch (Exception e) {e.printStackTrace();}
     }
+    */  
         
+    /** 
+     *  I did try to leave the Reading in doctor JSON file in this class,
+     *  However it didn't like to pass over the rest of the data
+     *  i.e. name & address
+     *
+     *
     public void ReadInDoctorsDetails(String ID, String Name, String Address){
         String dUserID = null;
         String dUsername = null;
@@ -203,4 +201,5 @@ public class ReadJSONFile {
         //catch (ParseException e) {e.printStackTrace();}
         catch (Exception e) {e.printStackTrace();}
     }
+*/
 }

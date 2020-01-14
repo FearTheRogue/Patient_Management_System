@@ -13,6 +13,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import patientmanagementsystem.ReadJSONFile;
+import patientmanagementsystem.doctor_createAppointments;
+import patientmanagementsystem.doctor_notes;
+import patientmanagementsystem.doctor_patientHistory;
+import patientmanagementsystem.doctor_prescribeMed;
+import patientmanagementsystem.doctor_requestMeds;
+import patientmanagementsystem.doctor_viewAppointments;
 
 /**
  *
@@ -54,29 +60,20 @@ public class User_Doctor extends javax.swing.JFrame {
             JSONArray doctorsArray = (JSONArray) jsonObject.get("Doctors");
             Iterator<String> iterator = doctorsArray.iterator();
             
-            System.out.println(doctorsArray);
-            
             int i = 0;
             while(iterator.hasNext()){
                 String id = (String)doctorsArray.get(i);
                 String name = (String)doctorsArray.get(i);
                 String address = (String)doctorsArray.get(i);
 
-                System.out.println("user " + i);
                 id = iterator.next();
                 name = iterator.next();
                 address = iterator.next();
                 
-                System.out.println("id " + id);
-                System.out.println("name " + name);
-                System.out.println("address " + address);
-                
                 if(id.equals(ID)){
-                    System.out.println("doctor id " + ID);
                     doctor_id_lbl.setText(id);
                     doctor_name_lbl.setText(name);
-                    doctor_address_lbl.setText(address);
-                    
+                    doctor_address_lbl.setText(address);                    
                     return;
                 }
                 
@@ -111,9 +108,9 @@ public class User_Doctor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        med_btn = new javax.swing.JButton();
+        requestMed_btn = new javax.swing.JButton();
+        viewAppointments_btn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         Logout_btn = new javax.swing.JButton();
 
@@ -201,22 +198,47 @@ public class User_Doctor extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Add notes during consultation");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton4.setText("Create appointments");
         jButton4.setToolTipText("");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton5.setText("Prescribe medicines");
-        jButton5.setToolTipText("");
+        med_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        med_btn.setText("Prescribe medicines");
+        med_btn.setToolTipText("");
+        med_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                med_btnActionPerformed(evt);
+            }
+        });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton6.setText("Medicines and Request");
-        jButton6.setToolTipText("");
+        requestMed_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        requestMed_btn.setText("Medicines and Request");
+        requestMed_btn.setToolTipText("");
+        requestMed_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestMed_btnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("View Appointments");
-        jButton3.setToolTipText("");
+        viewAppointments_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        viewAppointments_btn.setText("View Appointments");
+        viewAppointments_btn.setToolTipText("");
+        viewAppointments_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAppointments_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -228,12 +250,12 @@ public class User_Doctor extends javax.swing.JFrame {
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewAppointments_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(med_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(requestMed_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,11 +266,11 @@ public class User_Doctor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                    .addComponent(med_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)))
+                    .addComponent(viewAppointments_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(requestMed_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)))
         );
 
         Logout_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -307,7 +329,8 @@ public class User_Doctor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        doctor_patientHistory history = new doctor_patientHistory();
+        history.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Logout_btnActionPerformed
@@ -315,6 +338,31 @@ public class User_Doctor extends javax.swing.JFrame {
         LogInScreen LogIn = new LogInScreen();
         LogIn.setVisible(true);
     }//GEN-LAST:event_Logout_btnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        doctor_notes notes = new doctor_notes();
+        notes.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void viewAppointments_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAppointments_btnActionPerformed
+        doctor_viewAppointments view = new doctor_viewAppointments();
+        view.setVisible(true);
+    }//GEN-LAST:event_viewAppointments_btnActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        doctor_createAppointments create = new doctor_createAppointments();
+        create.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void med_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_med_btnActionPerformed
+        doctor_prescribeMed med = new doctor_prescribeMed();
+        med.setVisible(true);
+    }//GEN-LAST:event_med_btnActionPerformed
+
+    private void requestMed_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMed_btnActionPerformed
+        doctor_requestMeds request = new doctor_requestMeds();
+        request.setVisible(true);
+    }//GEN-LAST:event_requestMed_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,13 +410,13 @@ public class User_Doctor extends javax.swing.JFrame {
     private static javax.swing.JLabel doctor_name_lbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton med_btn;
+    private javax.swing.JButton requestMed_btn;
+    private javax.swing.JButton viewAppointments_btn;
     // End of variables declaration//GEN-END:variables
 }

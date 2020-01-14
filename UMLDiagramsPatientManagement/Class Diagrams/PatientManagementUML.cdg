@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="Administrator" package="" visibility="public" xPosition="10.0" yPosition="81.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getID" returnType="void" visibility="public"/>
+        <Method name="getName" returnType="void" visibility="public"/>
+        <Method name="getAddress" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Doctor" package="" visibility="public" xPosition="235.0" yPosition="221.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getID" returnType="void" visibility="public"/>
+        <Method name="getName" returnType="void" visibility="public"/>
+        <Method name="getAddress" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Patient" package="" visibility="public" xPosition="489.0" yPosition="249.0">
+      <Fields>
+        <Field name="Gender" type="Object" visibility="private"/>
+        <Field name="Age" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getID" returnType="void" visibility="public"/>
+        <Method name="getName" returnType="void" visibility="public"/>
+        <Method name="getAddress" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Secretary" package="" visibility="public" xPosition="647.0" yPosition="43.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getID" returnType="void" visibility="public"/>
+        <Method name="getName" returnType="void" visibility="public"/>
+        <Method name="getAddress" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Users" package="" visibility="public" xPosition="378.0" yPosition="43.0">
+      <Fields>
+        <Field name="UserID" type="Object" visibility="private"/>
+        <Field name="Name" type="Object" visibility="private"/>
+        <Field name="Address" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CreateAccount" package="" visibility="public" xPosition="220.0" yPosition="444.0">
+      <Fields>
+        <Field name="Name" type="Object" visibility="private"/>
+        <Field name="Address" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AccountRequest" package="" visibility="public" xPosition="750.0" yPosition="377.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DoctorsFeedback" package="" visibility="public" xPosition="14.0" yPosition="565.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getFeedback" returnType="void" visibility="public"/>
+        <Method name="getRating" returnType="void" visibility="public"/>
+        <Method name="getNotes" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ViewDoctorFeedback" package="" visibility="public" xPosition="10.0" yPosition="444.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="GiveDoctorFeedback" package="" visibility="public" xPosition="634.0" yPosition="477.0">
+      <Fields>
+        <Field name="doctorID" type="Object" visibility="private"/>
+        <Field name="Rating" type="Object" visibility="private"/>
+        <Field name="feedbackNotes" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PatientHistory" package="" visibility="public" xPosition="191.0" yPosition="-3.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Doctor" target="Users"/>
+    <IsRelation name="is" source="Administrator" target="Users"/>
+    <UseRelation name="" source="Patient" target="PatientHistory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="GiveDoctorFeedback" target="DoctorsFeedback"/>
+    <UseRelation name="" source="Doctor" target="ViewDoctorFeedback" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Secretary" target="Users"/>
+    <UseRelation name="" source="Administrator" target="CreateAccount" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Patient" target="Users"/>
+    <UseRelation name="" source="Doctor" target="CreateAccount" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="ViewDoctorFeedback" target="DoctorsFeedback"/>
+    <UseRelation name="" source="Administrator" target="ViewDoctorFeedback" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Doctor" target="PatientHistory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Patient" target="GiveDoctorFeedback" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

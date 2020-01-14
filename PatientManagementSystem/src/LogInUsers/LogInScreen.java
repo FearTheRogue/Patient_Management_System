@@ -5,20 +5,10 @@
  */
 package LogInUsers;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import patientmanagementsystem.ReadJSONFile;
-import patientmanagementsystem.WriteJSONFile;
 import patientmanagementsystem.login_CreateAcc;
 
 /**
@@ -249,7 +239,7 @@ public class LogInScreen extends javax.swing.JFrame {
             
             char firstLetter = inputID.charAt(0);
             
-            // STRAT PATTERN
+            // STRATEGY PATTERN
             switch(firstLetter){
                 case 'a':
                     User_Administrator Admin = new User_Administrator(inputID);

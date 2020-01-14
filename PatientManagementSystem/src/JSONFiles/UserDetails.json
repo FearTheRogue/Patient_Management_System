@@ -1,13 +1,13 @@
 {
     "Admins": [
-{
-        "ID":"a",
-        "Username":"James",
-        "Address":"Plymouth"
-        }
+        "a",
+        "James",
+        "Plymouth"
     ],
     "Secretarys": [
-        "s,Sarah,London"
+        "s",
+        "Sarah",
+        "London"
     ],
     "Doctors": [
         "d1",
@@ -21,8 +21,20 @@
         "Baker Street"
     ],
     "Patients": [
-        "p1,Rhea Ireland,Barnstaple,Female,23",
-        "p2,Jon Snow,Winkleigh,Male,68",
-        "p3,Izzy Cambridge,Exeter,Female,55"
+        "p1",
+        "Rhea Ireland",
+        "Barnstaple",
+        "Female",
+        "23",
+        "p2",
+        "Jon Snow",
+        "Winkleigh",
+        "Male",
+        "68",
+        "p3",
+        "Izzy Cambridge",
+        "Exeter",
+        "Female",
+        "55"
     ]    
 }
